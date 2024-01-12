@@ -17,7 +17,7 @@ A CI/CD Pipeline is created using GitHub Actions.
 As an extra step, a docker image is built and pushed to Docker Hub.
 **Continuous delivery** is implemented by deploying our application to Heroku.
 
-**## Routes**
+## Routes
 
 ****Auth:**** Allows a user to authenticate into their account using their email and password.
 An access token is created, which authorizes the user to perform actions for x amount of minutes. This number can be changed under your environment variables.
