@@ -34,3 +34,10 @@ The schema is also formed by:
 - created_at: Exact date of the creation of the post.
 - owner_id: Links the post to the unique ID of the user that created it.
 - owner: Provides a relationship between two mapped classes (Post and User).
+
+A user can only create posts under their unique ID and can't delete posts of which they are not the owner.
+
+**Vote:** Allows a user to add and remove a vote on a post. Users can vote on their posts and can't remove a vote from a post if they don't currently have a vote on a post.
+Users can't add multiple votes to the same post.
+
+This project is the result of a 19-hour comprehensive course by freeCodeCamp on Python API development.
