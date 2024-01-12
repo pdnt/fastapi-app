@@ -25,7 +25,7 @@ If one of the credentials is incorrect, a message will be returned indicating th
 
 ****User:**** Allows a person to create a user.
 OAuth2PasswordBearer is used to let FastAPI know that we are creating a security schema.
-JWT is used to encode the user and the password, using the HS256 algorithm. The password is hashed and the output is stored in a SQL database.
+JWT is used to encode the user and the password, using the HS256 algorithm. The password is hashed and the output is stored in a PostgreSQL database.
 
 ****Post:**** It's used to create posts, which consist of two fields, title and content.
 The schema is also formed by:
