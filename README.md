@@ -1,43 +1,50 @@
-fastapi-app is a full-fledged, fictitious social media app created using FastAPI.
+# FastAPI Social Media App
 
-The application is composed of four routes that allow a person to create a user, authenticate, create a post, view other posts, and vote for them.
-This API implements serialization/deserialization, schema validation, and models.
+**fastapi-app** is a fully functional, fictitious social media application built using FastAPI.
 
-Data is stored in a PostgreSQL database, which is managed using SQLAlchemy, and alembic as a database migration tool.
+The application consists of four routes enabling users to perform actions such as creating a user account, authentication, posting content, viewing other posts, and voting on them. It incorporates features such as serialization/deserialization, schema validation, and database models.
 
-**Unit testing** is performed using the pytest framework.
+Data storage is managed using a PostgreSQL database, leveraging SQLAlchemy for ORM functionality and alembic for seamless database migrations.
 
-The application was successfully deployed on:
--   DigitalOcean, using NGINX to handle SSL termination.
--   Heroku.
--   Ubuntu Server running on an LXC container over Proxmox on my local server.
-    
-A CI/CD Pipeline is created using GitHub Actions.
-**Continuous integration** is achieved by creating a testing environment that accesses our environment variables (which are saved as environment secrets) and creating a runner that pulls our code and executes the necessary steps to ensure our application can run.
-As an extra step, a docker image is built and pushed to Docker Hub.
-**Continuous delivery** is implemented by deploying our application to Heroku.
+Unit testing is conducted using the pytest framework to ensure the reliability and correctness of the application.
+
+## Deployment
+
+The application has been successfully deployed on multiple platforms:
+
+- **DigitalOcean**: Utilizing NGINX for SSL termination.
+- **Heroku**: Deployed to Heroku's cloud platform.
+- **Ubuntu Server**: Hosted on an LXC container via Proxmox on a local server.
+
+## CI/CD Pipeline
+
+A robust CI/CD pipeline has been established using GitHub Actions:
+
+- **Continuous Integration (CI)**: A testing environment is created to access environment variables securely stored as secrets. A runner is configured to pull the latest code and execute necessary tests, ensuring the application's functionality.
+- **Continuous Delivery (CD)**: Docker images are built and pushed to Docker Hub, facilitating deployment.
 
 ## Routes
 
-****Auth:**** Allows a user to authenticate into their account using their email and password.
-An access token is created, which authorizes the user to perform actions for x amount of minutes. This number can be changed under your environment variables.
-If one of the credentials is incorrect, a message will be returned indicating that the credentials are invalid.
+### Auth
+Allows users to authenticate into their account using their email and password. An access token is generated, authorizing user actions for a configurable duration. Invalid credentials trigger an appropriate error message.
 
-****User:**** Allows a person to create a user.
-OAuth2PasswordBearer is used to let FastAPI know that we are creating a security schema.
-JWT is used to encode the user and the password, using the HS256 algorithm. The password is hashed and the output is stored in a PostgreSQL database.
+### User
+Enables users to create accounts securely. OAuth2PasswordBearer ensures a robust security schema, with JWT used to encode user credentials. Passwords are securely hashed and stored in the PostgreSQL database.
 
-****Post:**** It's used to create posts, which consist of two fields, title and content.
-The schema is also formed by:
-- published: Boolean that defines if the post was published. It's set to TRUE.
-- id: Provides a unique identifier for the post.
-- created_at: Exact date of the creation of the post.
-- owner_id: Links the post to the unique ID of the user that created it.
-- owner: Provides a relationship between two mapped classes (Post and User).
+### Post
+Facilitates the creation of posts, comprising title and content fields. Additional post attributes include:
 
-A user can only create posts under their unique ID and can't delete posts of which they are not the owner.
+- **published**: Boolean indicating post publication status.
+- **id**: Unique identifier for each post.
+- **created_at**: Timestamp indicating post creation time.
+- **owner_id**: Links posts to the unique user ID of their creator.
+- **owner**: Establishes a relationship between post and user entities.
 
-**Vote:** Allows a user to add and remove a vote on a post. Users can vote on their posts and can't remove a vote from a post if they don't currently have a vote on a post.
-Users can't add multiple votes to the same post.
+Users can only create posts associated with their unique ID and cannot delete posts owned by others.
 
-This project is the result of a 19-hour comprehensive course by freeCodeCamp on Python API development.
+### Vote
+Enables users to add or remove votes on posts. Users can vote on their posts and are restricted from adding multiple votes to the same post or removing votes they haven't cast.
+
+## Acknowledgements
+
+This project is the culmination of a comprehensive 19-hour [Python API development course](https://www.freecodecamp.org/news/creating-apis-with-python-free-19-hour-course/) offered by freeCodeCamp.
