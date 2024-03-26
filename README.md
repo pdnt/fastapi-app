@@ -11,10 +11,20 @@ Unit testing is conducted using the pytest framework to ensure the reliability a
 ## Deployment
 
 The application has been successfully deployed on multiple platforms:
-
 - **DigitalOcean**: Utilizing NGINX for SSL termination.
 - **Heroku**: Deployed to Heroku's cloud platform.
 - **Ubuntu Server**: Hosted on an LXC container via Proxmox on a local server.
+
+#### Deploy locally
+1. Clone this repository: ```git clone git@github.com:pdnt/fastapi-app.git```
+2. Change the directory: ```cd fastapi-app```
+3. Install required libraries: ```pip install -r requirements.txt```
+4. Run the application: ```uvicorn app.main:app --host 0.0.0.0 --port 8000```
+
+#### Deploy with Docker
+1. Clone this repository: ```git clone git@github.com:pdnt/fastapi-app.git```
+2. Change the directory: ```cd fastapi-app```
+3. Build and start the container: ```docker compose -f .\docker-compose-dev.yml up -d```
 
 ## CI/CD Pipeline
 
@@ -45,6 +55,9 @@ Users can only create posts associated with their unique ID and cannot delete po
 ### Vote
 Enables users to add or remove votes on posts. Users can vote on their posts and are restricted from adding multiple votes to the same post or removing votes they haven't cast.
 
+### To do
+1. Add step-by-step instructions to deploy the application to Heroku.
+
 ## Acknowledgements
 
-This project is the culmination of a comprehensive 19-hour [Python API development course](https://www.freecodecamp.org/news/creating-apis-with-python-free-19-hour-course/) offered by freeCodeCamp.
+This project is based on a comprehensive 19-hour [Python API development course](https://www.freecodecamp.org/news/creating-apis-with-python-free-19-hour-course/) offered by freeCodeCamp.
