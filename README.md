@@ -26,6 +26,15 @@ The application has been successfully deployed on multiple platforms:
 2. Change the directory: ```cd fastapi-app```
 3. Build and start the container: ```docker compose -f .\docker-compose-dev.yml up -d```
 
+
+Please note that this application does not include a frontend interface. However, you can explore and test its functionality by interacting with the API documentation provided below:
+
+- Swagger UI: [http://localhost:8000/docs](http://localhost:8000/docs)
+  - Use Swagger UI to navigate the API endpoints, send requests, and view responses in an interactive manner.
+
+- Redocly: [http://localhost:8000/redoc](http://localhost:8000/redoc)
+  - Redocly provides a clear and structured documentation view, allowing you to understand the API endpoints and their functionalities.
+
 ## CI/CD Pipeline
 
 A robust CI/CD pipeline has been established using GitHub Actions:
